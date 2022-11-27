@@ -16,3 +16,5 @@ export const mkdir = (path: fs.PathLike) => Eff.sync(() => fs.mkdirSync(path));
 export const mkTempDir = Eff.sync(() =>
   fs.mkdtempSync(path.join(os.tmpdir(), "effectlings"))
 );
+
+export const rmdir = (path: fs.PathLike) => Eff.sync(() => fs.rmdirSync(path));

@@ -26,3 +26,7 @@ export const testStdout = Eff.serviceWith(TestLogsRef)(
     print: (message) => pipe(logs, Ref.update(RA.append(message))),
   })
 );
+
+export const dummyStdout: Stdout = {
+  print: () => Eff.succeed(undefined),
+};

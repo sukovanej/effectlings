@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cli": "node dist/entrypoint.js",
+    "cli": "node dist/src/entrypoint.js",
     "build": "tsc -b tsconfig.test.json",
     "watch": "tsc -b tsconfig.test.json -w",
     "test": "jest test",

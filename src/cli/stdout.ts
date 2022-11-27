@@ -25,3 +25,6 @@ export const printOk = (message: string) =>
 
 export const printError = (message: string) =>
   print(`${Color.Red}[ERROR]${Color.Reset} ${message}`);
+
+export const printInfo = (message: string) =>
+  print(`${Color.Green}[INFO ]${Color.Reset} ${message}`);

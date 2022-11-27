@@ -2,7 +2,9 @@ import * as Eff from "@effect/io/Effect";
 import { pipe } from "@fp-ts/data/Function";
 
 import { cli } from "../../src/cli";
+import { RunConfig } from "../../src/cli/runConfig";
 import { Stdout } from "../../src/cli/stdout";
+import { dummyRunConfig } from "./runConfig";
 import { getTestLogs, testLogsRef, TestLogsRef, testStdout } from "./stdout";
 
 describe("cli", () => {
@@ -13,6 +15,7 @@ describe("cli", () => {
         Eff.flatMap(() => getTestLogs),
         Eff.provideServiceEffect(Stdout)(testStdout),
         Eff.provideServiceEffect(TestLogsRef)(testLogsRef),
+        Eff.provideService(RunConfig)(dummyRunConfig),
         Eff.unsafeRunSync
       );
 
@@ -26,6 +29,7 @@ describe("cli", () => {
       Eff.catchAll(() => getTestLogs),
       Eff.provideServiceEffect(Stdout)(testStdout),
       Eff.provideServiceEffect(TestLogsRef)(testLogsRef),
+      Eff.provideService(RunConfig)(dummyRunConfig),
       Eff.unsafeRunSync
     );
 

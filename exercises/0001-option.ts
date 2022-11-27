@@ -6,9 +6,10 @@
  * implement a version of sqrt that returns `Option<number>` instead.
  */
 
-import { Option } from '@fp-ts/data/Option';
-import * as O from '@fp-ts/data/Option';
+import { Option } from "@fp-ts/data/Option";
+import * as O from "@fp-ts/data/Option";
 
-export function safeSqrt(input: number): Option<number> {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function safeSqrt(_input: number): Option<number> {
   return O.none;
 }

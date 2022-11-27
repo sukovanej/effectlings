@@ -16,7 +16,8 @@
     "@effect/io": "^0.0.21",
     "@fp-ts/core": "^0.0.8",
     "@fp-ts/data": "^0.0.16",
-    "@types/node": "^18.11.9"
+    "@types/node": "^18.11.9",
+    "ts-adt": "^2.1.2"
   },
   "devDependencies": {
     "typescript": "^4.9.3"

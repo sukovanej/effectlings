@@ -5,6 +5,7 @@ specifiers:
   '@fp-ts/core': ^0.0.8
   '@fp-ts/data': ^0.0.16
   '@types/node': ^18.11.9
+  ts-adt: ^2.1.2
   typescript: ^4.9.3
 
 dependencies:
@@ -12,6 +13,7 @@ dependencies:
   '@fp-ts/core': 0.0.8
   '@fp-ts/data': 0.0.16
   '@types/node': 18.11.9
+  ts-adt: 2.1.2
 
 devDependencies:
   typescript: 4.9.3
@@ -45,6 +47,10 @@ packages:
 
   /@types/node/18.11.9:
     resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
+    dev: false
+
+  /ts-adt/2.1.2:
+    resolution: {integrity: sha512-UD0lr7eyiBjxogQjb1xMCjF7skrnxGZLNm4iROeU3ky5tJzXN0yQkkS4DfNGfM4RaUGMhgyrzf2wUynqK8AdWQ==}
     dev: false
 
   /typescript/4.9.3:

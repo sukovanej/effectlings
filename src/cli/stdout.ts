@@ -5,6 +5,8 @@ enum Color {
   Green = "\x1b[32m",
   Reset = "\x1b[0m"
 }
+export const print = (message: string) =>
+  Eff.sync(() => console.log(message))
 
 export const printOk = (message: string) =>
   Eff.sync(() => console.log(`${Color.Green}[OK   ]${Color.Reset} ${message}`))

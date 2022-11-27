@@ -46,6 +46,9 @@ jobs:
     - name: Run the tests
       run: pnpm test -- --collect-coverage --coverageReporters=json-summary
 
+    - name: Run eslint
+      run: pnpm eslint
+
     - name: Generating coverage badges
       uses: jpb06/jest-badges-action@latest
       with:

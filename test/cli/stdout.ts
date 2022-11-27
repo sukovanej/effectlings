@@ -17,15 +17,11 @@ export const testLogsRef = pipe(
   Eff.map((logs): TestLogsRef => ({ logs }))
 )
 
-export const getTestLogs = pipe(
-  Eff.service(TestLogsRef),
-  Eff.flatMap(({ logs }) => Ref.get(logs))
-)
+export const getTestLogs =
+  Eff.serviceWithEffect(TestLogsRef)(({ logs }) => Ref.get(logs));
 
-export const testStdout = pipe(
-  Eff.service(TestLogsRef),
-  Eff.map(
+export const testStdout =
+  Eff.serviceWith(TestLogsRef)(
     ({ logs }): Stdout =>
       ({ print: (message) => pipe(logs, Ref.update(RA.append(message))) })
-  )
-);
+  );

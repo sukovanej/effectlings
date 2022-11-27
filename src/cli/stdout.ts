@@ -1,6 +1,5 @@
 import * as Eff from '@effect/io/Effect';
 import { Tag } from '@fp-ts/data/Context';
-import { pipe } from '@fp-ts/data/Function';
 
 export interface Stdout {
   print: (message: string) => Eff.Effect<never, never, void>;
@@ -18,10 +17,8 @@ enum Color {
   Reset = "\x1b[0m"
 }
 
-export const print = (message: string) => pipe(
-  Eff.service(Stdout),
-  Eff.flatMap(({ print }) => print(message))
-);
+export const print = (message: string) =>
+  Eff.serviceWithEffect(Stdout)(({ print }) => print(message));
 
 export const printOk = (message: string) =>
   print(`${Color.Green}[OK   ]${Color.Reset} ${message}`);

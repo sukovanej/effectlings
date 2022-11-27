@@ -31,15 +31,29 @@ const testStdout = pipe(
 );
 
 describe('cli', () => {
-  test('prints help if no argument provided', () => {
+  [[], ['help']].forEach((args, i) =>
+    test(`prints help (${i})`, () => {
+      const logs = pipe(
+        cli(args),
+        Eff.flatMap(() => getTestLogs),
+        Eff.provideServiceEffect(Stdout)(testStdout),
+        Eff.provideServiceEffect(TestLogsRef)(testLogsRef),
+        Eff.unsafeRunSync
+      );
+
+      expect(logs).toStrictEqual(['Effectling - dev']);
+    })
+  );
+
+  test(`prints unexpected error`, () => {
     const logs = pipe(
-      cli([]),
-      Eff.flatMap(() => getTestLogs),
+      cli(['unknown', 'args']),
+      Eff.catchAll(() => getTestLogs),
       Eff.provideServiceEffect(Stdout)(testStdout),
       Eff.provideServiceEffect(TestLogsRef)(testLogsRef),
       Eff.unsafeRunSync
     );
 
-    expect(logs).toStrictEqual(['Effectling - dev']);
-  });
+    expect(logs).toStrictEqual(['\x1b[31m[ERROR]\x1b[0m Unexpected arguments: "unknown args"']);
+  })
 })

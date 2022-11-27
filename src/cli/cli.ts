@@ -29,7 +29,7 @@ type CliCommand = RunCommand | HelpCommand;
 const parseArgs = (args: readonly string[]): Option<CliCommand> => {
   if (args.length === 1 && args[0] === 'run') {
     return O.of({ command: 'run' })
-  } else if (args.length === 1 && args[0] === 'help') {
+  } else if (args.length == 0 || args.length === 1 && args[0] === 'help') {
     return O.of({ command: 'help' })
   }
 

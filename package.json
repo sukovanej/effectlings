@@ -1,0 +1,24 @@
+{
+  "name": "effetlings",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cli": "node dist/entrypoint.js",
+    "build": "tsc -b tsconfig.test.json",
+    "watch": "tsc -b tsconfig.test.json -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@effect/io": "^0.0.21",
+    "@fp-ts/core": "^0.0.8",
+    "@fp-ts/data": "^0.0.16",
+    "@types/node": "^18.11.9"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.3"
+  }
+}

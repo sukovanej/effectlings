@@ -8,12 +8,9 @@ import { printInfo, printOk } from "./stdout";
 export const run = pipe(
   Eff.Do(),
   Eff.bind("solutionPath", () =>
-    // TODO: find out whether there is applicative on effect
     pipe(
-      Eff.Do(),
-      Eff.bind("cwd", () => getConfigCwd),
-      Eff.bind("solutionPath", () => getConfigSolutionPath),
-      Eff.map(({ cwd, solutionPath }) => path.join(cwd, solutionPath))
+      Eff.tuple(getConfigCwd, getConfigSolutionPath),
+      Eff.map(([cwd, solutionPath]) => path.join(cwd, solutionPath))
     )
   ),
   Eff.bind("solutionFolderExists", ({ solutionPath }) => exists(solutionPath)),
